@@ -1,4 +1,5 @@
 package edu.bip.clientlibproj.clientlibproj.controller;
 
-public class MainContoller {
+public class MainController {
+
 }
