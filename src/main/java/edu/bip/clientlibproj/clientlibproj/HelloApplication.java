@@ -2,7 +2,7 @@ package edu.bip.clientlibproj.clientlibproj;
 
 import edu.bip.clientlibproj.clientlibproj.Entity.BookEntity;
 import edu.bip.clientlibproj.clientlibproj.controller.EditBookController;
-import edu.bip.clientlibproj.clientlibproj.controller.MainContoller;
+import edu.bip.clientlibproj.clientlibproj.controller.MainController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -23,7 +23,7 @@ public class HelloApplication extends Application {
         stage.setScene(scene);
 
 
-        MainContoller controller = fxmlLoader.getController();
+        MainController controller = fxmlLoader.getController();
         stage.show();
     }
 

@@ -9,6 +9,8 @@ import okhttp3.*;
 
 import java.io.IOException;
 
+
+
 public class HTTPUtils {
     OkHttpClient client = new OkHttpClient();
 
@@ -26,7 +28,7 @@ public class HTTPUtils {
         }
     }
 
-    public BookListResponse get(String url, String args) throws IOException {
+    public BookListResponse get(String url, String  args) throws IOException {
         Request req = new Request.Builder().url(url + args).build();
         try (Response response = client.newCall(req).execute()) {
             BookListResponse book = new BookListResponse();
@@ -35,5 +37,16 @@ public class HTTPUtils {
         }
     }
 
+    public String put(String url, String json) throws IOException {
+        RequestBody req = new RequestBody.create(json, MediaType.get("application/json; charset=utf-8"));
+        Request request = new Request.Builder().url(url).post(body).build();
+        try (Response response = client.newCall(request).execute()) {
+            return response.body().string();
+    }
+    }
 
+
+    public boolean get(String url) {
+        return false;
+    }
 }
