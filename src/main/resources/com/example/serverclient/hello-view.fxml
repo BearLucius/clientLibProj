@@ -50,9 +50,9 @@
    <center>
       <TableView fx:id="bookTable" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <columns>
-          <TableColumn fx:id="columnNumber" prefWidth="34.0" text="№" />
+          <TableColumn fx:id="columnNumber" prefWidth="34.0" text="Год" />
           <TableColumn fx:id="columnTitle" prefWidth="154.0" text="Название" />
-            <TableColumn fx:id="ColumnAuthor" prefWidth="145.0" text="Автор" />
+            <TableColumn fx:id="columnAuthor" prefWidth="145.0" text="Автор" />
             <TableColumn fx:id="columnGenre" prefWidth="105.0" text="Жанр" />
             <TableColumn fx:id="columnPublisher" prefWidth="161.0" text="Издательство" />
         </columns>

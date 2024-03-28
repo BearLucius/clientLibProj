@@ -1,8 +1,7 @@
 package com.example.serverclient.service;
 
 
-
-import com.example.serverclient.entity.BookEntity;
+import com.example.serverclient.entity.CityEntity;
 import com.example.serverclient.properties.ClientProperties;
 import com.example.serverclient.response.BaseResponse;
 import com.example.serverclient.response.DataResponse;
@@ -14,19 +13,19 @@ import lombok.Getter;
 
 import java.lang.reflect.Type;
 
-public class BookService {
+public class CityService {
     @Getter
     private ObservableList data = FXCollections.observableArrayList();
     private final HttpService http = new HttpService();
     JsonService service = new JsonService();
     ClientProperties prop = new ClientProperties();
-    private Type dataType = new TypeToken<DataResponse<BookEntity>>() {
+    private Type dataType = new TypeToken<DataResponse<CityEntity>>() {
     }.getType();
-    private Type listType = new TypeToken<ListResponse<BookEntity>>() {
+    private Type listType = new TypeToken<DataResponse<CityEntity>>() {
     }.getType();
     public void getAll() {
-        ListResponse data = new ListResponse<>();
-        data = service.getObject(http.get(prop.getAllBook()), listType);
+        ListResponse data = new ListResponse();
+        data = service.getObject(http.get(prop.getAllCity()), listType);
         if (data.isSuccess()) {
             this.data.addAll(data.getData());
             this.data.forEach(System.out::println);
@@ -34,8 +33,8 @@ public class BookService {
             throw new RuntimeException(data.getMessage());
         }
     }
-    public void add(BookEntity data) {
-        String temp = http.post(prop.getSaveBook(), service.getJson(data));
+    public void add(CityEntity data) {
+        String temp = http.post(prop.getSaveCity(), service.getJson(data));
         DataResponse response = service.getObject(temp, dataType);
         if (response.isSuccess()) {
             this.data.add(response.getData());
@@ -43,8 +42,8 @@ public class BookService {
             throw new RuntimeException(response.getMessage());
         }
     }
-    public void update(BookEntity data) {
-        String temp = http.put(prop.getUpdateBook(), service.getJson(data));
+    public void update(CityEntity data) {
+        String temp = http.put(prop.getUpdateCity(), service.getJson(data));
         DataResponse response = service.getObject(temp,dataType);
         if (response.isSuccess()) {
             this.data.remove(data);
@@ -54,8 +53,8 @@ public class BookService {
         }
     }
     //TODO дописать на сервере
-    public void delete(BookEntity data) {
-        String temp = http.delete(prop.getDeleteBook(), data.getId());
+    public void delete(CityEntity data) {
+        String temp = http.delete(prop.getDeleteCity(), data.getId());
         BaseResponse response = service.getObject(temp, BaseResponse.class);
         if (response.isSuccess()) {
             this.data.remove(data);
@@ -64,8 +63,8 @@ public class BookService {
         }
     }
     //TODO дописать
-    public void findById(BookEntity data) {
-        String temp = http.get(prop.getFineByIdBook() + data.getId());
+    public void findById(CityEntity data) {
+        String temp = http.get(prop.getFineByIdCity() + data.getId());
         DataResponse response = service.getObject(temp, dataType);
         if (response.isSuccess()) {
             this.data.add(response.getData());
